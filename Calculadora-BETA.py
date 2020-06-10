@@ -1,61 +1,47 @@
-# OBJETIVO: Calculadora de Figuras e Sólidos Geométricos
-import math
-
+# OBJECTIVE: Calculadora de Figuras e Sólidos Geométricos
 pi = 3.14
-resp = str(input("Put the name of the figure (ex.: Square): "))
 
-f1 = ['Square', 'Retangule', 'Quadrilateral', 'Paralelogram']
-f2 = ['Triangule']
-f3 = ['Trapeze']
-# f4 = ['Circle', 'Semicircle']
+# square-retangule-quadrilateral-figure
+def Quadrilateral (h, w):
+    area = (h * w)
+    print("Area: ", area," m²")
 
-h = 10
-w = 1
-a = 10
+def Triangule (h, w):
+    area = h * w / 2
+    print("Area: ", area," m²")
 
+def Trapeze (h, m_base, l_base):
+    area = (h * (m_base + l_base))/ 2
+    print("Area: ", area, " m²")
 
-class Figure():
-    height = 1
-    width = 1
-    area = 1
+def Circle (r):
+    area = (4)*(pi)*((r)**2)
+    print("Area: ", area, " m²")
 
-    def __init__(self, height, width, area):
-        self.height = height
-        self.width = width
-        self.area = area
+option = int(input('''
+1- Quadrilateral
+2- Triangule
+3- Trapeze
+4- Circle
+     
+Insert the option(only one number): '''))
+while True:
+    if option == 1:
+        h = float(input("Put the value of height(meters): "))
+        w = float(input("Put the value of width(meters): "))
+        Quadrilateral(h, w)
 
-    def display(self):
-        print("Height = " + str(self.height))
-        print("Width = " + str(self.width))
-        print("Area = " + str(self.area))
+    elif option == 2:
+        h = float(input("Put the value of height(meters): "))
+        w = float(input("Put the value of width(meters): "))
+        Triangule(h, w)
 
-    def calculate(self):
-        pass
+    elif option == 3:
+        h = float(input("Put the value of height(meters): "))
+        m_base = float(input("Put the value of minor base(meters): "))
+        l_base = float(input("Put the value of larger base(meters): "))
+        Trapeze(h, m_base, l_base)
 
-
-#criar classe de tipos de figura#
-class FigureType:
-
-if resp in f1:
-    def calculate(self):
-        self.area = self.width * self.height
-
-
-    obj = Figure(w, h)  # test
-    obj.calculate()
-    obj.display()
-elif resp in f2:
-    def calculate(self):
-        self.area = (self.width * self.height) / 2
-
-    obj = Figure(w, h)  # test
-    obj.calculate()
-    obj.display()
-
-elif resp in f3:
-    def calculate(self):
-        self.area = (self.width * self.height) / 2
-
-    obj = Figure(w, h)  # test
-    obj.calculate()
-    obj.display()
+    elif option == 4:
+        r = float(input("Put the value of radius(meters): "))
+        Circle(r)
