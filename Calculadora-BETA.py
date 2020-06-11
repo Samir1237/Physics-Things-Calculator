@@ -25,23 +25,25 @@ option = int(input('''
 4- Circle
      
 Insert the option(only one number): '''))
-while True:
-    if option == 1:
-        h = float(input("Put the value of height(meters): "))
-        w = float(input("Put the value of width(meters): "))
-        Quadrilateral(h, w)
+if option == 1:
+    h = float(input("Put the value of height(meters): "))
+    w = float(input("Put the value of width(meters): "))
+    Quadrilateral(h, w)
 
-    elif option == 2:
-        h = float(input("Put the value of height(meters): "))
-        w = float(input("Put the value of width(meters): "))
-        Triangule(h, w)
+elif option == 2:
+    h = float(input("Put the value of height(meters): "))
+    w = float(input("Put the value of width(meters): "))
+    Triangule(h, w)
 
-    elif option == 3:
-        h = float(input("Put the value of height(meters): "))
-        m_base = float(input("Put the value of minor base(meters): "))
-        l_base = float(input("Put the value of larger base(meters): "))
-        Trapeze(h, m_base, l_base)
+elif option == 3:
+    h = float(input("Put the value of height(meters): "))
+    m_base = float(input("Put the value of minor base(meters): "))
+    l_base = float(input("Put the value of larger base(meters): "))
+    Trapeze(h, m_base, l_base)
 
-    elif option == 4:
-        r = float(input("Put the value of radius(meters): "))
-        Circle(r)
+elif option == 4:
+    r = float(input("Put the value of radius(meters): "))
+    Circle(r)
+
+else:
+    print("Try again :/")
