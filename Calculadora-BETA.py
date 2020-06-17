@@ -1,4 +1,5 @@
 # OBJECTIVE: Calculadora de Figuras e Sólidos Geométricos
+import PySimpleGUI as sg
 pi = 3.14
 
 # square-retangule-quadrilateral-figure
@@ -18,32 +19,51 @@ def Circle (r):
     area = (4)*(pi)*((r)**2)
     print("Area: ", area, " m²")
 
-option = int(input('''
-1- Quadrilateral
-2- Triangule
-3- Trapeze
-4- Circle
-     
-Insert the option(only one number): '''))
-if option == 1:
-    h = float(input("Put the value of height(meters): "))
-    w = float(input("Put the value of width(meters): "))
-    Quadrilateral(h, w)
+class Screen:
+    def __init__(self):
+        #Layout
+        layout = [
+            [sg.Text('Select form:', size=(10,0)),sg.Input(size=(15,0),key='form')],
+            [sg.Text('Put the value(m):', size=(10, 0)), sg.Input(size=(15, 0), key='input_1')],
+            [sg.Text('Put the value(m):', size=(10, 0)), sg.Input(size=(15, 0), key='input_2')],
+            [sg.Text('Put the value(m):', size=(10, 0)), sg.Input(size=(15, 0), key='input_3')],
+            [sg.Text('Result: ', size=(10,0)),sg.Input(size=(15,0),key='result')],
+            [sg.Button("Calculate")],
+            [sg.Output(size=(30,20))]
+        ]
+        #Window
+        self.window = sg.Window("Values").layout(layout)
+        #Extracting values
+        self.button, self.values = self.window.Read()
 
-elif option == 2:
-    h = float(input("Put the value of height(meters): "))
-    w = float(input("Put the value of width(meters): "))
-    Triangule(h, w)
+    def Iniciate(self):
+        while True:
+            self.button, self.values = self.window.Read()
+'''
+            form = self.form['form']
+            area = self.area['result']
+            print(f'Form: {self.form}')
+            if form == '1':
+                h = self.values['input_1']
+                w = self.values['input_2']
+                Quadrilateral(h, w)
 
-elif option == 3:
-    h = float(input("Put the value of height(meters): "))
-    m_base = float(input("Put the value of minor base(meters): "))
-    l_base = float(input("Put the value of larger base(meters): "))
-    Trapeze(h, m_base, l_base)
+            elif form == '2':
+                h = self.values['input_1']
+                w = self.values['input_1']
+                Triangule(h, w)
+    
+            elif form == '3':
+                h = self.values['input_1']
+                m_base = self.values['input_2']
+                l_base = self.values['input_3']
+                Trapeze(h, m_base, l_base)
+    
+            elif form == '4':
+                r = self.values['input_1']
+                Circle(r)
+'''
+tela = Screen()
+tela.Iniciate()
 
-elif option == 4:
-    r = float(input("Put the value of radius(meters): "))
-    Circle(r)
 
-else:
-    print("Try again :/")
